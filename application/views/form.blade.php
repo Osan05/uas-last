@@ -37,22 +37,33 @@
         <form method ="post" action="{{ site_url ('Welcome/simpan') }}">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Username</label>
-                <select class ="form-control" name = "username">
+                <select class ="form-control" name = "user_id" id="">
                   @foreach($avail_user as $user)
                   <option value="{{ $user->id }}">{{ $user->username }}</option>
                   @endforeach
                 </select>
-                </select>
             </div>
-            <div class="mb-3">
-              <label for="Jenis">Jenis</label><br>
-              <input type="radio" id="berita" name="jenis" value="Berita"> 
-                <label for="berita">Berita</label>
-              <input type="radio" id="tutorial" name="jenis" value="Tutorial">
-                <label for="tutorial">Tutorial</label>
-              <input type="radio" id="blog" name="jenis" value="Blog">
-                <label for="blog">Blog</label>
+            <!-- radio -->
+            <p>Jenis</p>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault1" value="Berita" required>
+              <label class="form-check-label" for="flexRadioDefault1">
+                Berita
+              </label>
             </div>
+            <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault1" value="Tutorial" required>
+              <label class="form-check-label" for="flexRadioDefault1">
+                Tutorial
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault1" value="Blog" required>
+              <label class="form-check-label" for="flexRadioDefault1">
+                Blog
+              </label>
+            </div>
+            <br>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Artikel</label>
                 <textarea class="form-control" id="nama" name="artikel" rows="3"></textarea>

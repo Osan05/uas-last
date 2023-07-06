@@ -36,12 +36,46 @@
         <form method ="post" action="{{ site_url ('Welcome/update/' .$post->id) }}">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Username</label>
-                <select class ="form-control" name = "username">
+                <select class ="form-control" name = "user_id" id="">
                   @foreach($avail_user as $user)
-                  <option value="{{ $user->id }}" {{ $post->user_id == $user->id? "selected": ""}}>{{ $user->username }}</option>
+                  <option value="{{ $user->id }}" >{{ $user->username }}</option>
                   @endforeach
                 </select>
             </div>
+            <!-- radio -->
+            <p>Jenis</p>
+            <div class="form-check form-check-inline">
+              @if($jenis == 0)
+                <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault1" value="Berita" required checked>
+              @else
+                <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault1" value="Berita" required>
+              @endif
+              <label class="form-check-label" for="flexRadioDefault1">
+                Berita
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              @if($jenis == 1)
+                <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault1" value="Tutorial" required checked>
+              @else
+                <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault1" value="Tutorial" required>
+              @endif
+              <label class="form-check-label" for="flexRadioDefault1">
+                Tutorial
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              @if($jenis == 2)
+                <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault1" value="Blog" required checked>
+              @else
+                <input class="form-check-input" type="radio" name="radio" id="flexRadioDefault1" value="Blog" required>
+              @endif
+              <label class="form-check-label" for="flexRadioDefault1">
+                Blog
+              </label>
+            </div>
+            <br>
+            <!-- artikel -->
             <div class="mb-3">
               <label for="Jenis">Jenis</label><br>
               <input type="radio" id="berita" name="jenis" value="Berita"> 

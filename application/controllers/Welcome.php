@@ -42,14 +42,14 @@ class Welcome extends CI_Controller
     public function index()
     {
         $avail_user = User::all();
-        $this->_createView('form',['avail_user' => $avail_user]);
+        $this->_createView('form',['avail_user' => $user]);
     }
 
     public function simpan()
     {
-        $user_id = $this->input->post('username');
+        $user_id = $this->input->post('user_id');
         $artikel = $this->input->post('artikel');
-        $jenis = $this->input->post('jenis');
+        $jenis = $this->input->post('radio');
        
 
         $post = new Post();
@@ -63,24 +63,29 @@ class Welcome extends CI_Controller
 
     public function hapus($id)
     {
-        $post = Post::find($id);
-        $post->delete();
+        $del = Post::find($id);
+        $del->delete();
 
         redirect('Welcome/tampil');
     }
 
-    public function ubah($id)
+    public function edit($id)
     {
-        $avail_user = User::all();
         $post = Post::find($id);
-        $this->_createView('update', ['post' => $post,'avail_user' =>$avail_user]);
+        $user = User::all();
+        
+        $jenis = 0;
+        if($post->jenis == 'Berita') $jenis =0;
+        else if ($post->jenis == 'Tutorial')$jenis =1;
+        else if ($post->jenis == 'Blog') $jenis =2;
+        $this->_createView('update', ['post' => $post,'users' =>$user, 'jenis' => $jenis]);
     }
 
     public function update($id){
         $post = Post::find($id);
-        $post->user_id = $this->input->post('username');
+        $post->user_id = $this->input->post('user_id');
         $post->artikel = $this->input->post('artikel');
-        $post->jenis = $this->input->post('jenis');
+        $post->jenis = $this->input->post('radio');
         $post->save();
 
         redirect('Welcome/tampil');
@@ -93,4 +98,3 @@ class Welcome extends CI_Controller
     }
 }
 
-//edit

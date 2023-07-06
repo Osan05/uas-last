@@ -38,27 +38,31 @@
         <h2 class="text-body-emphasis">Tampil Input Data</h2>
         <table class="table table-bordered">
           <tr>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Artikel</th>
-            <th>Jenis</th>
-            <th>Created_at</th>
-            <th>Updated_at</th>
-            <th>Action</th>
-          </tr>
-          @foreach($post_list as $post)
-          <tr>
-            <td>{{ $post->user->username }}</td>
-            <td>{{ $post->user->email }}</td>
-            <td>{{ $post->artikel }}</td>
-            <td>{{ $post->jenis }}</td>
-            <td>{{ $post->created_at }}</td>
-            <td>{{ $post->updated_at }}</td>
-            <td>
-              <a href="{{ site_url('Welcome/hapus/'.$post->id)}}" class="btn btn-danger">Delete</a> 
-              <a href="{{ site_url('Welcome/ubah/'.$post->id) }}" class="btn btn-info">Edit</a>
-            </td>
-          </tr>
+          <td scope="col">#</td>
+              <td scope="col">Username</td>
+              <td scope="col">Email</td>
+              <td scope="col">Artikel</td>
+              <td scope="col">Jenis</td>
+              <td scope="col">Created at</td>
+              <td scope="col">Updated at</td>
+              <td scope="col">Action</td>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($post_list as $post)
+            <tr>
+              <td scope="row">-</td>
+              <td>{{ $post->user->username }}</td>
+              <td>{{ $post->user->email }}</td>
+              <td>{{ $post->article }}</td>
+              <td>{{ $post->jenis }}</td>
+              <td>{{ $post->created_at }}</td>
+              <td>{{ $post->updated_at }}</td>
+              <td>
+                <a href="{{ site_url('Welcome/hapus/' . $post->id) }}" class="btn btn-danger">Delete</a>
+                <a href="{{ site_url('Welcome/edit/' . $post->id) }}" class="btn btn-info">Edit</a>
+              </td>
+            </tr>
           @endforeach
         </table>
         <a href="{{ site_url('Welcome/index') }}" class="btn btn-success">Tambah</a>
